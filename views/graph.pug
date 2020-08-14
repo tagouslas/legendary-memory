@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+
+        // HEAD (links, others scripts, etc.)
+        include components/head.pug
+    body
+        // HEADER (navigation, menu, etc.)
+        include components/navigation.pug
+
+        // SELECT TEACHER SECTION
+        div(class="my_container my_tablecontainer container shadow mt-4")
+            h3(class="text-light").
+                <i class="fas fa-user-tie"></i>
+                Selecionar un docente
+            br
+            div(class="input-group input-group-lg")
+                select(id="prof" class="custom-select" )
+                    option(selected) Elegir...
+                div(class="input-group-append")
+                    button(id="ver" class="btn btn-primary") Ver
+
+        // GRADES CHART SECTION
+        div(class="my_container my_tablecontainer container shadow")
+            h3(class="text-light mt-4").
+                <i class="fas fa-table"></i>
+                Puntajes obtenidos en la evaluación
+            h5(class="text-light mt-4 font-weight-bolder" id="nombre")
+            h5(class="text-light mt-4 font-weight-bolder" id="programa")
+            br
+            div(class="table-responsive-lg")
+                table(class="table table-sm table-dark table-bordered")
+                    thead
+                    tr(id="columnsContainer")
+                    tbody(id="rowsContainer")
+
+        // GRAPH SECTION
+        div(class="my_container my_tablecontainer container shadow")
+            h3(class="text-light").
+                <i class="fas fa-chart-pie"></i>
+                Los graficos
+            br
+            div(class="container")
+                div(class="row")
+                    div(class="col-lg my_container shadow my_graphcontainer mx-2")
+                        canvas(id="graph-autoeva")
+                    div(class="col-lg my_container shadow my_graphcontainer mx-2")
+                        canvas(id="graph_estudiantes")
+                div(class="row")
+                    div(class="col-lg my_container shadow my_graphcontainer mx-2")
+                        canvas(id="graph-coordinadores")
+                    div(class="col-lg my_container shadow my_graphcontainer mx-2")
+                        canvas(id="graph_promedios")
+
+        // SCRIPT TO CONTROL THE PAGE
+        script(src="/js/graph.js")
+
+        // FOOTER (scripts, footer structure, etc.)
+        include components/footer.pug

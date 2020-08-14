@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        include components/head.pug
+        
+    body
+        include components/navigation.pug
+
+        div(class="my_container container mt-4 p-4")
+            div(class="row")
+                div(class="col-sm-4 p-3 shadow")
+                    div(class="nav flex-column nav-pills rounded-lg " id="v-pills-tab" role="tablist" aria-orientation="vertical")
+                        // NAVIGATION MENU
+                        a(class="nav-link disabled bg-dark text-light font-weight-bold rounded-top" aria-selected="false").
+                            IMPORTAR DATOS
+                        a(class="nav-link my-1 active" id="v-pills-autoeva-tab" data-toggle="pill" href="#v-pills-autoeva" role="tab" aria-controls="v-pills-autoeva" aria-selected="true").
+                            Autoevaluación
+                        a(class="nav-link my-1" id="v-pills-estudiantes-tab" data-toggle="pill" href="#v-pills-estudiantes" role="tab" aria-controls="v-pills-estudiantes" aria-selected="true").
+                            Estudiantes
+                        a(class="nav-link my-1" id="v-pills-coordinadores-tab" data-toggle="pill" href="#v-pills-coordinadores" role="tab" aria-controls="v-pills-coordinadores" aria-selected="true").
+                            Coordinadores
+                        
+                div(class="col-sm-8")
+                    div(class="tab-content" id="v-pills-tabContent")
+                        // DATOS AUTOEVALUACION
+                        div(class="tab-pane fade show active" id="v-pills-autoeva" role="tabpanel" aria-labelledby="v-pills-autoeva-tab")
+                            form(action="/import/autoeva", method="post", enctype="multipart/form-data")
+                                div(class="my_container my_tablecontainer container shadow")
+                                    h4(class="text-light") Archivo CSV de la autoevaluación
+                                    br
+                                    //// INPUT
+                                    div(class="input-group")
+                                        div(class="custom-file")
+                                            input(name="import_autoeva" type="file" class="custom-file-input" id="input_autoeva" aria-describedby="igfa1")
+                                            label(class="custom-file-label" id="label_autoeva" for="input_autoeva") Elegir un archivo CSV...
+                                        div(class="input-group-append")
+                                            button(class="btn btn-primary" type="submit" id="igfa1") Enviar
+                                    br
+                        
+                        // DATOS ESTUDIANTES
+                        div(class="tab-pane fade show" id="v-pills-estudiantes" role="tabpanel" aria-labelledby="v-pills-estudiantes-tab")
+                            form(action="/import/estudiantes" method="post" enctype="multipart/form-data")
+                                div(class="my_container my_tablecontainer container shadow")
+                                    h4(class="text-light") Archivo CSV de las evaluaciones estudiantes
+                                    br
+                                    //// INPUT
+                                    div(class="input-group")
+                                        div(class="custom-file")
+                                            input(name="import_estudiantes" type="file" class="custom-file-input" id="input_estudiantes" aria-describedby="igfa2")
+                                            label(class="custom-file-label" id="label_estudiantes" for="input_estudiantes") Elegir un archivo CSV...
+                                        div(class="input-group-append")
+                                            button(class="btn btn-primary" type="submit" id="igfa2") Enviar
+                                    br
+                        
+                        // DATOS COORDINADORES
+                        div(class="tab-pane fade show" id="v-pills-coordinadores" role="tabpanel" aria-labelledby="v-pills-coordinadores-tab")
+                            form(action="/import/coordinadores" method="post" enctype="multipart/form-data")
+                                div(class="my_container my_tablecontainer container shadow")
+                                    h4(class="text-light") Archivo CSV de las evaluaciones coordinadores
+                                    br
+                                    //// INPUT
+                                    div(class="input-group")
+                                        div(class="custom-file")
+                                            input(name="import_coordinadores" type="file" class="custom-file-input" id="input_coordinadores" aria-describedby="igfa3")
+                                            label(class="custom-file-label" id="label_coordinadores" for="input_coordinadores") Elegir un archivo CSV...
+                                        div(class="input-group-append")
+                                            button(class="btn btn-primary" type="submit" id="igfa3") Enviar
+                                    br
+
+        script(src="/js/import.js")
+                    
+        include components/footer.pug
